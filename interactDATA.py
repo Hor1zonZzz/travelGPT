@@ -8,3 +8,9 @@ def generate_session_id():
 def get_session_history(session_id):
     '''在数据库中获取会话历史'''
     return SQLChatMessageHistory(session_id, sql_url)
+
+# 创建searchAssistant的函数调用会话历史
+def search_session_id():
+    return str(uuid.uuid4())
+
+#

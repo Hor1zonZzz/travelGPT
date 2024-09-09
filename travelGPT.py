@@ -1,6 +1,6 @@
 import os
 import dotenv
-import prompt
+import travelGPT.travelGPT_prompt as travelGPT_prompt
 from operator import itemgetter
 from interactDATA import get_session_history, generate_session_id
 from langchain_core.messages import trim_messages
@@ -12,7 +12,7 @@ dotenv.load_dotenv()
 model = ChatOpenAI(name="ChatAssistant", model="gpt-4o-2024-08-06")
 
 # Load the prompt
-prompt = prompt.travelGPT_prompt
+travelGPT_prompt = travelGPT_prompt.travelGPT_prompt
 
 # Create a session id for database
 chat_session_id = generate_session_id()
@@ -33,7 +33,7 @@ trimmer = trim_messages(
 
 # chain
 chain = (
-    RunnablePassthrough.assign(chat_history=itemgetter("chat_history") | trimmer) | prompt | model
+    RunnablePassthrough.assign(chat_history=itemgetter("chat_history") | trimmer) | travelGPT_prompt | model
 )
 
 # Create a runnable with history

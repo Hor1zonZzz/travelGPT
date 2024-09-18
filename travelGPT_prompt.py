@@ -64,7 +64,10 @@ travelGPT_prompt = ChatPromptTemplate.from_messages(
 '''
 用于搜索Assistant的提示词
 '''
-search_key_words_genPrompt = "You are a search keyword generator. Based on {user_input}, generate 5 phrases or keywords for using in a search engine"
+search_key_words_genPrompt = (
+    "You are a search keyword generator."
+    "Based on {user_input}, generate 5 diverse phrases or keywords for search engines, including synonyms, related terms, or phrases, ensuring a balance between precision and breadth."
+    )
 
 search_system_prompt = (
     "You are an assistant for searching the web."
